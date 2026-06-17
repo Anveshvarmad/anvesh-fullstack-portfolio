@@ -1,0 +1,177 @@
+.intro-page {
+  min-height: 100vh;
+  width: 100%;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(0, 255, 117, 0.14), transparent 28%),
+    radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.08), transparent 25%),
+    #020302;
+  color: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.intro-page-leave {
+  animation: introExit 0.6s ease forwards;
+}
+
+.intro-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 70px 70px;
+  opacity: 0.5;
+}
+
+.intro-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 2rem;
+}
+
+.intro-role {
+  color: #00ff75;
+  font-size: clamp(0.75rem, 1.3vw, 1rem);
+  font-weight: 800;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: introSmallReveal 0.7s ease 0.2s forwards;
+}
+
+.intro-name {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  font-size: clamp(3.4rem, 10vw, 9.5rem);
+  line-height: 0.82;
+  letter-spacing: -0.08em;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.intro-name span {
+  opacity: 0;
+  transform: translateY(70px) scale(0.96);
+  animation: introNameReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.intro-name span:nth-child(1) {
+  animation-delay: 0.35s;
+  color: #e8e8e8;
+}
+
+.intro-name span:nth-child(2) {
+  animation-delay: 0.55s;
+  color: #ffffff;
+}
+
+.intro-name span:nth-child(3) {
+  animation-delay: 0.75s;
+  color: #00ff75;
+}
+
+.intro-line {
+  height: 4px;
+  width: 0;
+  background: #00ff75;
+  margin: 1.8rem auto 1.2rem;
+  animation: introLineReveal 0.7s ease 1s forwards;
+}
+
+.intro-tagline {
+  max-width: 760px;
+  margin: 0 auto;
+  color: #bdbdbd;
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  line-height: 1.7;
+  opacity: 0;
+  animation: introSmallReveal 0.7s ease 1.15s forwards;
+}
+
+@keyframes introNameReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes introSmallReveal {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes introLineReveal {
+  to {
+    width: min(420px, 70vw);
+  }
+}
+
+@keyframes introExit {
+  to {
+    opacity: 0;
+    transform: scale(1.04);
+    filter: blur(8px);
+  }
+}
+/* =========================
+   EDUCATION EXTRA DETAILS
+========================= */
+
+.certification-panel,
+.achievement-panel {
+  position: relative;
+  z-index: 2;
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 22px;
+  background: rgba(0, 255, 117, 0.055);
+  border: 1px solid rgba(0, 255, 117, 0.13);
+}
+
+.certification-panel p,
+.achievement-panel p {
+  margin: 0 0 0.85rem;
+  color: #ffffff;
+  font-weight: 950;
+  letter-spacing: -0.02em;
+}
+
+.certification-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.certification-grid span {
+  padding: 0.62rem 0.78rem;
+  border-radius: 999px;
+  color: #eafff1;
+  background: rgba(0, 255, 117, 0.09);
+  border: 1px solid rgba(0, 255, 117, 0.18);
+  font-size: 0.88rem;
+  font-weight: 850;
+}
+
+.achievement-panel ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.achievement-panel li {
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.65;
+  padding-left: 0.35rem;
+}
