@@ -1,163 +1,146 @@
-# Anvesh Dantuluri — Dynamic Portfolio
+# Anvesh Full-Stack Portfolio
 
-A full-stack portfolio built with:
+A dynamic full-stack developer portfolio built with **React, TypeScript, Django, PostgreSQL, Docker, Render, and Vercel**.
 
-- **Backend:** Django + Django REST Framework + SQLite
-- **Frontend:** React + TypeScript + Vite + React Router
-- **Dynamic data:** About, education, experience, projects, and skills are served from Django API endpoints
-- **Contact form:** Saves messages into the Django database and admin panel
+## Live Demo
 
-## Project structure
+Portfolio:
+https://anvesh-fullstack-portfolio.vercel.app/
+
+Backend API:
+https://anvesh-fullstack-portfolio-1.onrender.com/api
+
+## Tech Stack
+
+**Frontend**
+
+* React
+* TypeScript
+* Vite
+* React Router
+* CSS animations
+* Parallax effects
+
+**Backend**
+
+* Python
+* Django
+* Django REST Framework
+* Gunicorn
+* WhiteNoise
+
+**Database & Deployment**
+
+* PostgreSQL
+* Docker
+* Render
+* Vercel
+* GitHub
+
+## Features
+
+* Animated cinematic home page
+* Multi-page portfolio layout
+* About, Education, Experience, Projects, Skills, and Contact pages
+* Dynamic portfolio data from Django API
+* Rotating technical skills globe
+* Parallax background effects
+* GitHub and LinkedIn profile links
+* Responsive design for desktop and mobile
+
+## Project Structure
 
 ```text
 anvesh-fullstack-portfolio/
 ├── backend/
-│   ├── config/                  # Django project settings
-│   ├── portfolio/               # Django app: models, serializers, views, API routes
-│   ├── manage.py
-│   └── requirements.txt
+│   ├── config/
+│   ├── portfolio/
+│   ├── Dockerfile
+│   ├── start.sh
+│   ├── requirements.txt
+│   └── manage.py
+│
 ├── frontend/
-│   ├── public/                  # Resume PDF
 │   ├── src/
-│   │   ├── api/                 # API client
-│   │   ├── components/          # Shared UI components
-│   │   ├── pages/               # 7 portfolio pages
+│   │   ├── components/
+│   │   ├── pages/
 │   │   ├── App.tsx
+│   │   ├── main.tsx
 │   │   └── styles.css
+│   ├── public/
 │   └── package.json
-└── scripts/
-    └── start-dev.sh             # Optional helper to run both apps
+│
+├── docker-compose.yml
+└── README.md
 ```
 
-## Pages included
+## Local Setup
 
-1. Home
-2. About Me
-3. Education
-4. Work Experience
-5. Projects
-6. Skills
-7. Contact
-
-## Requirements
-
-Install these first:
-
-- Python 3.12+
-- Node.js 20.19+ or 22.12+
-- npm
-
-## Local setup — backend
-
-Open Terminal 1:
+Clone the repository:
 
 ```bash
-cd anvesh-fullstack-portfolio/backend
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-python manage.py migrate
-python manage.py seed_portfolio
-python manage.py createsuperuser
-python manage.py runserver 127.0.0.1:8000
-```
-
-Backend URLs:
-
-```text
-http://127.0.0.1:8000/api/health/
-http://127.0.0.1:8000/api/snapshot/
-http://127.0.0.1:8000/admin/
-```
-
-## Local setup — frontend
-
-Open Terminal 2:
-
-```bash
-cd anvesh-fullstack-portfolio/frontend
-npm install
-cp .env.example .env
-npm run dev
-```
-
-Frontend URL:
-
-```text
-http://localhost:5173
-```
-
-## Optional: run both with one command
-
-After completing backend and frontend setup once:
-
-```bash
+git clone https://github.com/Anveshvarmad/anvesh-fullstack-portfolio.git
 cd anvesh-fullstack-portfolio
-./scripts/start-dev.sh
 ```
 
-## How to edit portfolio content
-
-You have two options:
-
-### Option 1 — Edit from Django Admin
-
-1. Run the backend.
-2. Open `http://127.0.0.1:8000/admin/`.
-3. Log in using the superuser you created.
-4. Edit Profile, Education, Experience, Projects, and Skills.
-
-### Option 2 — Edit seed data
-
-Edit:
-
-```text
-backend/portfolio/management/commands/seed_portfolio.py
-```
-
-Then rerun:
+Run with Docker:
 
 ```bash
-python manage.py seed_portfolio
+docker compose up --build
 ```
 
-## Main backend files
+Local URLs:
 
 ```text
-backend/portfolio/models.py
-backend/portfolio/serializers.py
-backend/portfolio/views.py
-backend/portfolio/urls.py
-backend/portfolio/admin.py
+Frontend: http://localhost:5173
+Backend:  http://localhost:8000/api/snapshot/
+Admin:    http://localhost:8000/admin/
 ```
 
-## Main frontend files
+Stop containers:
+
+```bash
+docker compose down
+```
+
+## Backend API
+
+Main API endpoints:
 
 ```text
-frontend/src/App.tsx
-frontend/src/api/client.ts
-frontend/src/pages/HomePage.tsx
-frontend/src/pages/AboutPage.tsx
-frontend/src/pages/EducationPage.tsx
-frontend/src/pages/ExperiencePage.tsx
-frontend/src/pages/ProjectsPage.tsx
-frontend/src/pages/SkillsPage.tsx
-frontend/src/pages/ContactPage.tsx
-frontend/src/styles.css
+/api/health/
+/api/snapshot/
 ```
 
-## API endpoints
+The frontend uses `/api/snapshot/` to load portfolio data.
+
+## Deployment
+
+Frontend is deployed on **Vercel**.
+
+Backend and PostgreSQL database are deployed on **Render**.
+
+Frontend environment variable:
 
 ```text
-GET  /api/snapshot/
-GET  /api/profile/
-GET  /api/education/
-GET  /api/experience/
-GET  /api/projects/
-GET  /api/skills/
-POST /api/contact/
+VITE_API_BASE_URL=https://anvesh-fullstack-portfolio-1.onrender.com/api
 ```
 
-## Production notes for later
+Backend environment variables:
 
-For deployment, use PostgreSQL instead of SQLite, configure environment variables, build the React app, and serve it through a platform such as Render, Railway, Fly.io, AWS, or Vercel + a separate Django API host.
+```text
+DEBUG=False
+SECRET_KEY=your-secret-key
+DATABASE_URL=your-postgres-url
+ALLOWED_HOSTS=anvesh-fullstack-portfolio-1.onrender.com
+CORS_ALLOWED_ORIGINS=https://anvesh-fullstack-portfolio.vercel.app
+CSRF_TRUSTED_ORIGINS=https://anvesh-fullstack-portfolio.vercel.app
+```
+
+## Author
+
+**Anvesh Varma Dantuluri**
+
+* Portfolio: https://anvesh-fullstack-portfolio.vercel.app/
+* GitHub: https://github.com/Anveshvarmad
+* LinkedIn: https://www.linkedin.com/in/anvesh-varma-2b0747249
